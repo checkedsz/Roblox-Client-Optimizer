@@ -1,60 +1,251 @@
-@echo off
-
-echo.
-echo RCO was created and is maintained by L8X.
-echo (C) L8X 2022 - Present, All Rights Reserved.
-echo.
-
-echo.
-echo Starting RCO installation...
-echo.
-
-for /d %%i in ("%localappdata%\Roblox\Versions\*") do (
-    if exist "%%i\RobloxPlayerBeta.exe" (
-        set folder=%%i
-        goto :NextStep
-    )
-)
-
-for /d %%i in ("C:\Program Files (x86)\Roblox\Versions\*") do (
-    if exist "%%i\RobloxPlayerBeta.exe" (
-        set folder=%%i
-        goto :NextStep
-    )
-)
-
-for /d %%i in ("C:\Program Files\Roblox\Versions\*") do (
-    if exist "%%i\RobloxPlayerBeta.exe" (
-        set folder=%%i
-        goto :NextStep
-    )
-)
-
-:NextStep
-if not exist "%folder%\ClientSettings" (
-    mkdir "%folder%\ClientSettings"
-)
-
-echo Downloading ClientAppSettings.json file...
-powershell.exe -Command "& {(New-Object System.Net.WebClient).DownloadFile('https://roblox-client-optimizer.simulhost.com/ClientAppSettings.json', '%folder%\ClientSettings\ClientAppSettings.json')}"
-if %errorlevel% EQU 0 (
-    echo ClientAppSettings.json downloaded successfully!
-    echo.
-    echo SUCCESS: RCO installation completed!
-) else (
-    echo Failed to download ClientAppSettings.json. Please report this issue in the #help-me channel of the Discord server.
-    echo.
-    echo ERROR: RCO installation failed!
-)
-
-echo.
-echo NOTE:
-echo.
-echo 1. Run this script every time there is an update announcement in the Discord server or when Roblox updates!
-echo.
-echo 2. If you need help, use the #help-me channel in the Discord server!
-echo.
-echo 3. To uninstall RCO at any time, run RCO-Uninstaller.cmd!
-echo.
-echo.
-echo Press any key to continue... & pause >nul
+{
+  "FStringFlagUpdateVersion": "139 Beta - Version 14",
+  "DFIntSecondsBetweenDynamicVariableReloading": 31557600,
+  "FIntRolloutEnrollmentExpirationMinutes": 525949,
+  "DFFlagDynamicFastVariableReloaderTest1": false,
+  "FFlagExecDynInitTests": false,
+  "DFFlagEarlyExitIfHang": false,
+  "FIntTerrainOTAMaxTextureSize": 1024,
+  "FIntUITextureMaxRenderTextureSize": 1024,
+  "FIntMaxCachedPatches": 2,
+  "FIntTaskSchedulerAutoThreadLimit": 16,
+  "FIntMeshContentProviderForceCacheSize": 268435456,
+  "FIntDefaultMeshCacheSizeMB": 256,
+  "DFIntHttpCurlConnectionCacheSize": 134217728,
+  "DFIntHttpCurlMaxConnectionsPerHost": 32,
+  "DFIntHttpConnMaxAge": 3600,
+  "DFIntHttpCacheRetryCount": 4,
+  "DFIntHttpCacheRefreshHundredthsPercent": 75,
+  "DFIntExternalHttpRequestSizeLimitKB": 16384,  
+  "DFIntHttpBatchApi_maxReqs": 4,
+  "DFIntHttpMaxRedirects": 6,
+  "DFIntHttpMaxRetries": 4,
+  "DFFlagHttpCacheCleanBasedOnMemory": true,  
+  "DFFlagEnableHttpCacheForceRevalidate2": false,
+  "FIntEmotesAnimationsPerPlayerCacheSize": 16777216,
+  "DFIntUserIdPlayerNameCacheSize": 33554432,
+  "DFIntUserIdPlayerNameLifetimeSeconds": 86400,
+  "FIntHttpCurlMaxCachedHandlesPerHost": 16,
+  "DFIntTaskSchedulerTargetFps": 500,
+  "FIntSSAOMipLevels": 0,
+  "DFIntJoinDataCompressionLevel": 2,
+  "DFIntClusterCompressionLevel": 2,
+  "DFIntNetworkSchemaCompressionRatio": 18,
+  "FFlagHandleAltEnterFullscreenManually": false,
+  "FFlagEnableQuickGameLaunch": true,
+  "FFlagPreloadAllFonts": true,
+  "FFlagPreloadMinimalFonts": true,
+  "FFlagPreloadTextureItemsOption4": true,
+  "FFlagBatchAssetApi": true,
+  "DFLogBatchAssetApiLog": 6,
+  "FFlagEnableZeroLatencyCacheForVersionedAssets": true,
+  "FFlagFinishFetchingAssetsCorrectly": true,
+  "FFlagAnimationClipMemCacheEnabled": true,
+  "FFlagCacheRequestedMaxSize": true,
+  "FFlagGraphicsD3D11AllowThreadSafeTextureUpload": true,
+  "FFlagGraphicsEnableD3D10Compute": true,
+  "FFlagGraphicsTextureCopy": true,
+  "DFFlagAlwaysPutSoundsOnDiskWhenLowOnMemory": true,
+  "FFlagUpdateUICachesWithQuadTree3": true,
+  "DFFlagExperimentalRuntimeTextureCreation": true,
+  "FFlagFixGraphicsQuality": true,
+  "FFlagCommitToGraphicsQualityFix": true,
+  "FFlagFixTextureCompositorFramebufferManagement2": true,
+  "DFFlagQueueDataPingFromSendData": true,
+  "FFlagDontCreatePingJob": true,
+  "FFlagRenderGpuTextureCompressor": true,
+  "DFIntRenderingThrottleDelayInMS": 20,
+  "FFlagHumanoidParallelFasterSetCollision": true,
+  "FFlagHumanoidParallelFasterWakeUp": true,
+  "FFlagHumanoidParallelFixTickleFloor2": true,
+  "FFlagHumanoidParallelOnStep2": true,
+  "FFlagHumanoidParallelSafeCofmUpdate": true,
+  "FFlagHumanoidParallelSafeUnseat": true,
+  "FFlagHumanoidParallelUseManager4": true,
+  "FIntClientCompressionFormatRequestPC": 3,
+  "DFFlagThrottleDeveloperConsoleEvents": true,
+  "FFlagFastGPULightCulling3": true,
+  "FFlagDebugForceFSMCPULightCulling": true,
+  "FFlagUseMediumpSamplers": true,
+  "DFFlagPredictedOOM": false,
+  "DFFlagPredictedOOMAbs": false,
+  "DFFlagUsePredictedOOMAbsLimitForMemoryCurve": false,
+  "DFFlagOOMTimestamp2": false,
+  "DFIntInferredOOMUsedMemHundredthsPercent": 0,
+  "DFIntPredictedOOMPercent": 0,
+  "FFlagCacheHardwareInfo": true,
+  "DFLogHttpTrace": 0,
+  "DFLogHttpTraceError": 0,
+  "DFLogHttpTraceLight": 0,
+  "DFFlagEnableLuobuCDNDomain": false,
+  "DFFlagEnableLuobuServiceDomain": false,
+  "FFlagLuobuLuaAuthEnabled": false,
+  "FFlagLuobuModerationStatusAvailable": false,
+  "FStringFeature_LuobuLuaAuthEnabled": "0;0",
+  "DFFlagEnableRobloxCNDomains": false,
+  "DFIntSendJoinTimeDeltasToDiagLuobu_HundredthsPercentage": 0,
+  "DFIntSendJoinTimeStatsHundPrecLuobuOverride": 0,
+  "DFFlagEnableExtraUnreachableTelemetry": false,
+  "DFIntPercentileTelemetryHundredPercent": 0,
+  "DFFlagEnablePercentileTelemetry": false,
+  "DFIntSendAvatarLoadTimeStats_HundredthsPercentage": 0,
+  "DFIntSendHttpRbxApiStatsToDiag_HundredthsPercentage": 0,
+  "DFIntSendJoinHttpBytesToDiag_HundredthsPercentage": 0,
+  "DFIntSendJoinTimeDeltasToDiag_HundredthsPercentage": 0,
+  "DFIntSendJoinTimeStatsToDiag_HundredthsPercentage": 0,
+  "DFIntSendJoinTimesToDiag_HundredthsPercentage": 0,
+  "DFFlagEnableLogServiceCounter": false,
+  "DFFlagPhysicsReceiveReportPerfData2": false,
+  "DFFlagPhysicsAnalytics": false,
+  "DFFlagProximityPromptAnalytics": false,
+  "DFFlagCountOldChatAPIUsageV2": false,
+  "DFFlagStoreUniqueIdInferredCrashSystem": false,
+  "FFlagWindowsLaunchTypeAnalytics": false,
+  "FFlagTrackPlaceIdForCrashEnabled": false,
+  "GoogleAnalyticsAccountPropertyID": "opt-out",
+  "FFlagNFDN2644ExplicitlyConstructCrashReporterInStartup": false,
+  "DFFlagEnableMemProfilingStorePlaceId": false,
+  "DFFlagChatFloodCheckEnableEventCounters": false,
+  "DFFlagChatFloodCheckEnableEventIngest": false,
+  "DFFlagEnableMemProfilingOutsideClient": false,
+  "DFFlagIncludeFreeOsMemAndOtherTelemetryForHarmony": false,
+  "BuildVariantInBacktrace": false,
+  "DFFlagCrashUploadFullDumps": false,
+  "HttpDetailedLogging": false,
+  "DFFlagHttpReportAnalyticsTelem": false,
+  "DFFlagMemoryPressureGCStats": false,
+  "DFFlagOsVersionWin32": false,
+  "FFlagEnableBacktraceMissingLogReport": false,
+  "DFStringCrashUploadToBacktraceTestingToken": "opt-out",
+  "DFStringCrashUploadToBacktraceMacPlayerToken": "opt-out",
+  "DFStringCrashUploadToBacktraceWindowsPlayerToken": "opt-out",
+  "FStringCoreScriptBacktraceErrorUploadToken": "opt-out",
+  "FFlagWin32CrashUploadRobloxTelemetry": false,
+  "FStringGamesUrlPath": "/games/",
+  "DFFlagAddPublicGettersForGfxQualityAndFpsForTelemCounters2": false,
+  "GoogleAnalyticsAccountPropertyIDPlayer": "opt-out",
+  "DFFlagAdditionalUWPCrashReportData": false,
+  "DFFlagAddGlobalAnalyticsPlaySessionId": false,
+  "DFFlagEnableRolloutFlagCrashDataUWP": false,
+  "DFFlagEnableRolloutFlagCrashDataMacClient": false,
+  "DFFlagCrashpadReportGfx": false,
+  "DFFlagEnableHumanoidStateChangeTelemtry": false,
+  "FFlagContactImporterAddBacktraceAttribute": false,
+  "FFlagEnableBacktraceAttachmentsV3": false,
+  "FFlagUserAgentInBacktraceReports": false,
+  "DFFlagEnableHumanoidStateChangeTelemtryOldStateDuration": false,
+  "DFFlagLegacyRedundantPlayerCheckAnalytics": false,
+  "FFlagEnableReportAnythingAnalytics": false,
+  "DFFlagAddAdditionalTagsEventIngest2": false,
+  "DFFlagAddGlobalWindToPlaceStats": false,
+  "DFFlagAddLightingToPlaceStats": false,
+  "DFFlagAddStreamingEnabledTagEventIngest": false,
+  "DFFlagAMPTelemetryPoints": false,
+  "DFFlagAMPTelemetryUser": false,
+  "DFFlagAUMPAnalytics": false,
+  "DFFlagAttachmentCrashReport": false,
+  "FFlagEnableBacktraceResponseHandler": false,
+  "FFlagEnableBacktraceConnectionDidFailHandler": false,
+  "FFlagEnableBatteryStateLogger": false,
+  "FIntLuaAppBacktraceErrorReportPercentage": 0,
+  "FFlagWin32BacktraceWindowsLaunchType": false,
+  "FIntBacktraceUseSyncPercentage": 0,
+  "FIntAbuseReportScreenshotMaxSize": 0,
+  "DFIntCrashReportingHundredthsPercentage": 0,
+  "DFIntCrashUploadErrorInfluxHundredthsPercentage": 0,
+  "DFIntCrashUploadToBacktracePercentage": 0,
+  "DFIntWriteFullDmpPercent": 0,
+  "DFFlagSafetyServiceScreenshot": false,
+  "DFFlagESGamePerfMonitorEnabled": false,
+  "DFIntESGamePerfMonitorHundredthsPercentage": 0,
+  "FIntGamePerfMonitorPercentage": 0,
+  "DFFlagEnablePerfAudioCollection": false,
+  "DFFlagEnablePerfDataCoreCategoryTimersCollection2": false,
+  "DFFlagEnablePerfDataCoreTimersCollection2": false,
+  "DFFlagEnablePerfDataCountersCollection": false,
+  "DFFlagEnablePerfDataGatherTelemetry2": false,
+  "DFFlagEnablePerfDataMemoryCategoriesCollection2": false,
+  "DFFlagEnablePerfDataMemoryCollection": false,
+  "DFFlagEnablePerfDataMemoryPerformanceCleanup3": false,
+  "DFFlagEnablePerfDataMemoryPressureCollection": false,
+  "DFFlagEnablePerfDataReportThermals": false,
+  "DFFlagEnablePerfDataSubsystemTimersCollection2": false,
+  "DFFlagEnablePerfDataSummaryMode": false,
+  "DFFlagEnablePerfRenderStatsCollection2": false,
+  "DFFlagEnablePerfStatsCollection3": false,
+  "FFlagReportFpsAndGfxQualityPercentiles": false,
+  "DFFlagAddPublicGettersForGfxQualityAndFpsForTelemCounters": false,
+  "DFIntBrowserTrackerApiDeviceInitializeRolloutPercentage": 0,
+  "DFFlagBrowserTrackerIdTelemetryEnabled": false,
+  "FFlagReportJoinTelemetry": false,
+  "FFlagJoinTimeCounters": false,
+  "FFlagSessionTelemetryApp": false,
+  "DFFlagAddPlaySessionIdTelemetry": false,
+  "DFIntLoginTelemetryHundredthsPercent": 0,
+  "FIntReportDeviceInfoRollout": 0,
+  "DFIntReportDeviceInfoRate": 0,
+  "DFIntReportFmodErrorsRate": 0,
+  "DFFlagAddUserIdToSessionTracking": false,
+  "DFFlagClientBaseNetworkMetrics": false,
+  "DFFlagBaseNetworkMetrics": false,
+  "DFFlagHttpClientRequestMetrics2": false,
+  "DFFlagHttpPointsErrorMetrics": false,
+  "DFFlagHttpPointsResponseMetrics": false,
+  "DFFlagHttpLogRedirects": false,
+  "DFFlagHttpTraceErrorCurrentUrl": false,
+  "DFFlagHttpTraceErrorProxy": false,
+  "DFFlagHttpServiceErrorLogEnabled": false,
+  "DFFlagNewInferredCrashSystem": false,
+  "DFFlagNewInferredCrashSystemV2": false,
+  "DFFlagNewInferredCrashTelemetrySystem": false,
+  "DFFlagInferredCrashMemReportingV2": false,
+  "DFFlagInferredCrashSystemSuccessReportMove": false,
+  "DFIntHttpInfluxHundredthsPercentage": 0,
+  "DFIntHttpInfluxReportsPerMillion": 0,
+  "DFIntHttpGAFailureReportPercent": 0,
+  "DFIntGoogleAnalyticsLoadPlayerHundredth": 0,
+  "DFIntHttpAnalyticsMaxHistory": 0,
+  "FIntRenderShaderLoadAnalyticsHundredthPercent": 0,
+  "FStringImmersiveAdsUniverseWhitelist": "0",
+  "FFlagImmersiveAdsWhitelistDisabled": false,
+  "FFlagEnableAdsAPI": false,
+  "FFlagAdServiceEnabled": false,
+  "DFFlagEnableGCapsHardwareTelemetry": false,
+  "DFFlagAudioDeviceTelemetry": false,
+  "FFlagEnableSoundTelemetry": false,
+  "DFFlagEnableHardwareTelemetry": false,
+  "DFIntHardwareTelemetryHundredthsPercent": 0,
+  "DFFlagEphemeralCounterInfluxReportingEnabled": false,
+  "DFIntEphemeralCounterInfluxReportingPriorityHundredthsPercent": 0,
+  "DFIntEphemeralStatsInfluxReportingPriorityHundredthsPercent": 0,
+  "DFFlagVoiceChatEnableEventCounters3": false,
+  "DFFlagVoiceChatUnderrunErrorsTelemetry": false,
+  "DFFlagVoiceChatHttpResultBodyEmptyTelemetry": false,
+  "FFlagVoiceChatEnableBlockTelemetry": false,
+  "FFlagVoiceChatStatsMultistreamSubscriptionsV2": false,
+  "FFlagEnableFlagRolloutCrashReportingWindows": false,
+  "DFIntLogFileTelemetryInfluxDbHundredthsPercentage": 0,
+  "DFIntLmsClientMaxTargets": 0,
+  "FFlagLocServicePerformanceAnalyticsEnabled": false,
+  "DFFlagDebugAnalyticsSendUserId": false,
+  "DFStringAnalyticsEventStreamUrlEndpoint": "opt-out",
+  "DFStringAltHttpPointsReporterUrl": "https://opt-out.roblox.com",
+  "DFStringAltTelegrafHTTPTransportUrl": "http://opt-out.roblox.com",
+  "DFStringTelegrafHTTPTransportUrl": "https://opt-out.roblox.com",
+  "DFStringLmsRecipeEndpoint": "/opt-out",
+  "DFStringLmsReportEndpoint": "/opt-out",
+  "DFFlagEnableLightstepReporting2": false,
+  "DFIntLightstepHTTPTransportHundredthsPercent2": 0,
+  "DFStringLightstepHTTPTransportUrlHost": "https://opt-out.roblox.com",
+  "DFStringLightstepHTTPTransportUrlPath": "/opt-out",
+  "DFStringLightstepToken": "opt-out",
+  "DFStringHttpPointsReporterUrl": "https://opt-out.roblox.com",
+  "DFStringCrashUploadToBacktraceBaseUrl": "https://opt-out.roblox.com",
+  "FFlagBacktraceMainSourcePathEnabled": false,
+  "FStringErrorUploadToBacktraceBaseUrl": "https://opt-out.roblox.com",
+  "DFFlagReportGlobalAnalyticsUniverseAndPlaceIds": false,
+  "DFStringRobloxAnalyticsSubDomain": "opt-out",
+  "DFStringRobloxAnalyticsURL": "https://opt-out.roblox.com",
+  "DFStringAnalyticsNS1ApplicationId": "opt-out",
+  "DFStringAnalyticsNS1BeaconConfig": "https://opt-out.roblox.com"
+}
